@@ -1,0 +1,44 @@
+version: "3"
+services:
+      client:
+        build: ./client
+        container_name: client-mfa
+        ports:
+          - "3000:3000"
+        stdin_open: true
+        tty: true
+        depends_on:
+          - server
+        links:
+          - server
+        networks:
+          - mfa-networks
+
+      server:
+        build: ./
+        container_name: server-mfa
+        restart: always
+        ports:
+          - "3001:3001"
+        depends_on:
+          - database
+        links:
+          - database
+        networks:
+          - mfa-networks
+      
+      database:
+        image: mongo
+        container_name: mongo-db
+        ports:
+          - "27017:27017"
+        volumes:
+          - /database:/data/db
+        
+        networks:
+          - mfa-networks
+
+networks:
+  mfa-networks:
+    driver: bridge
+
