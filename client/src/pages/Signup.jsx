@@ -19,7 +19,7 @@ const Signup = () => {
 			if (passwordRef.current.value !== passwordConfirmRef.current.value)
 				throw new Error("Passwords do not match");
 			const res = await axios.post(
-				"api/user/signup",
+				"https://face-auth-server.onrender.com/api/user/signup",
 				{
 					email: emailRef.current.value,
 					password: passwordRef.current.value,

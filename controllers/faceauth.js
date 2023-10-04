@@ -36,7 +36,7 @@ const face_auth = async (req, res, next) => {
 		res.status(200).json({ access: true, fac: 3, user:{ email: user["email"],createdAt:user["createdAt"]},  msg: "Authentication Successful" });
 	} catch (err) {
 		console.error(err);
-		res.status(400).json({ access: false, fac: 3, msg: err.message });
+		res.status(400).json({ access: false, fac: 3, msg: err.message }); 
 	}
 };
 
