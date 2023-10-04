@@ -31,7 +31,7 @@ const Signup = () => {
 			setSuccess(res.data.msg);
 			setLoading(false);
 			setTimeout(() => {
-				alert(res.data);
+				alert(res.data.msg);
 			}, 100);
 		} catch (err) {
 			e.target.reset();
@@ -111,8 +111,8 @@ const Signup = () => {
             <div className="mt-4 text-center text-gray-500">
               <span>
                 Already have an account?{' '}
-                <Link to="/login" className="text-blue-500 hover:underline">
-                  Login
+                <Link to="/facelogin" className="text-green-500 hover:underline">
+                 Face Login
                 </Link>
               </span>
             </div>

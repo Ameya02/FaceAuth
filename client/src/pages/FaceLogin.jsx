@@ -78,7 +78,7 @@ const FaceLogin = () => {
         <button
           type="submit"
           disabled={loading || success}
-          className={`w-full bg-green-500 text-white px-10 rounded ${
+          className={`w-full bg-green-500 text-white px-10 py-2 rounded ${
             loading && 'opacity-75 cursor-not-allowed'
           }`}
         >

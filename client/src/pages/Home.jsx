@@ -1,15 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 	const navigate = useNavigate()
-	const user = JSON.parse(localStorage.getItem('user'))|| null;
-	console.log(user)
-	useEffect(() => {
-		if (user){
+	const [user, setUser] = useState({});
+	
+	useEffect(()=> {
+		const u = JSON.parse(localStorage.getItem('user'))|| null;
+		if(!u){
 			navigate("/signup")
 		}
-	}, [])
+		else{
+			setUser(u)
+		}
+	},[user,navigate])
 	
 	
 	const logout = () => {
@@ -28,9 +32,8 @@ const Home = () => {
 				<p className="card-text">
 					<b>PrevLoign:</b> {user.createdAt}
 				</p>
-				<button className={`w-full bg-green-500 text-white py-2 my-4 rounded ${
-            loading && 'opacity-75 cursor-not-allowed'
-          }`} onClick={logout}>Logout</button>
+				<button className="w-full bg-green-500 text-white py-2 my-4 rounded "
+        onClick={logout}>Logout</button>
 			</div>
 		</div>
 	);

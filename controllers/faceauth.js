@@ -1,20 +1,15 @@
 const { User } = require("../models/userModel.js");
 const { createToken } = require("../middlewares/userAuth.js");
 const { compare, getFacialEmbeddings } = require("../face_recognition/recognize.js");
-const { use } = require("../routes/routes.js");
 
 
 /**
- * User Controller, fires Asynchronously over /face route
+ * User Controller, fires Asynchronously over /faceauth route
  *
  * Check if User exists and authentication step, and get the corresponding embedding vector 
  * now compare them with the generated embeddings, if similarity is greater than a threshold,
  * send a cookie else log error to console setting status code to 400.
  *
- * @param {object} req Parsed json object received from Client
- * @param {object} res Parsed json object Set to the Client
- * @param {function} next function fired to move to next middleware
- * @returns {Promise} Response Object
  */
 const face_auth = async (req, res, next) => {
 	try {
